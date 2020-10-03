@@ -1,0 +1,31 @@
+version: "3"
+services:
+  sample-app:
+    container_name: reactDocker
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - "./frontend:/usr/src/app"
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=${NODE_ENV}
+    stdin_open: true
+  
+  app:
+    container_name: serverDocker
+    restart: always
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - '8000:8000' 
+    links: 
+      - mongo
+
+  mongo:
+    container_name: mongoDB
+    image: mongo
+    ports:
+      - "27017:27017"
