@@ -44,7 +44,7 @@ function App() {
             Add todoList
           </button>
           <button type="button" class="btn btn-primary" style={{ marginTop: 20, marginLeft: 20 }} onClick={() => {gettodo()}}>
-            Click to view TodoList
+            Click to view Name
           </button>
           <div>
           {showTodo.map((data) => <div>{`${data.name}`}</div>)}
